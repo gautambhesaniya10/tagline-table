@@ -2,7 +2,7 @@ import React from "react";
 
 const Table = ({ data }) => {
   if (!data || data.length === 0) {
-    return <div>No data available</div>;
+    return <div className="text-black font-semibold text-lg text-center my-20">No data available</div>;
   }
 
   const allKeys = data?.reduce((keys, obj) => {
@@ -22,13 +22,16 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, rowIndex) => (
+        {
+            !data || data.length === 0 ? <div>No data available</div> : data.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {columns?.map((column, colIndex) => (
                 <td key={colIndex}>{row[column]}</td>
               ))}
             </tr>
-          ))}
+          ))
+        }
+          {}
         </tbody>
       </table>
     </div>
